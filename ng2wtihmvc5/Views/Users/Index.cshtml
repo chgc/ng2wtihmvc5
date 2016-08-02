@@ -1,4 +1,11 @@
-﻿<h1>Hello World!!!! </h1>
+﻿
+@using Microsoft.Reporting.WebForms;
+@using MvcReportViewer;
+
+@model ng2wtihmvc5.Model.reportModel
+
+
+<h1>Hello World!!!! </h1>
 <ul>
     
 @for(var i = 0; i < 10; i++)
@@ -13,3 +20,14 @@
     </span>
 </div>
 <button class="btn btn-default" (click)="showme= !showme">toggle</button>
+<hr />
+
+@{
+
+    var settings = new ControlSettings
+    {
+        UseCurrentAppDomainPermissionSet = true
+    };
+}
+
+@Html.MvcReportViewerFluent("ssrs/Report1.rdlc").ProcessingMode(ProcessingMode.Local).LocalDataSource("DataSet1", Model.dt).ControlSettings(settings).Attributes(new { Height = 900, Width = 900, style = "border: none" })
