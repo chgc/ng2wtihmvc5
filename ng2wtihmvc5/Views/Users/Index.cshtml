@@ -6,3 +6,10 @@
     <li>@i</li>
 }
 </ul>
+
+<div *ngIf="showme">
+    <span style="{color: 'red'}">
+        trigger by angular2
+    </span>
+</div>
+<button class="btn btn-default" (click)="showme= !showme">toggle</button>
